@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ 
+  <head>
+        <div class="main">
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle blue"></div>
+                <div class="circle green"></div>
+                <div class="circle red"></div>
+                <div class="circle yellow"></div>
+                <div class="circle blue"></div>
+                <div class="circle green"></div>
+              </div>
+        <title>Web LED Control</title>
+        <meta name="viewport" content="width=400px" />
+       
+        <script src="socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="style.css">
+		
+  </head>
+  
+
+  <body>
+        
+        <h1>Welcome to the Light Game!</h1>
+
+        <form>
+                <label for="passwordLabel">Enter Password:</label><br>
+         <input type="number" id="passwordLabel" name="height1" placeholder="Enter password on your card"><br>
+        </form>
+        <br>
+        <button id="passwordButton" onclick="showValue(9)">Submit</button> <br> 
+
+        
+        
+        <p>Level 1!</p> <input type="button" id= "levelOne" onclick="showValue(6)" />
+
+        <p>Level 2!</p> <input type="button" id= "levelTwo" onclick="showValue(7)" />
+        <p>Level 3!</p> <input type="button" id= "levelThree" onclick="showValue(8)" />
+
+        
+
+
+        <p>Click to turn Red LED on</p> <input type="button" id= "inputSlider" onclick="showValue(1)" />
+        <p>Click to turn Blue LED on</p> <input type="button" id= "inputSlider" onclick="showValue(3)" />
+        <p>Click to turn Green LED on</p> <input type="button" id= "inputSlider" onclick="showValue(5)" />
+       
+
+
+    
+        <script type="text/javascript">
+                
+
+                var socket = io.connect();
+               
+                socket.on('led', function (data) {
+                        
+                
+                });
+               
+                function showValue(newValue)
+                {
+                        socket.emit('led', { value: newValue });
+                }
+
+                function testingFunction(testVal){
+                        socket.emit('led', {value: testValue})
+                }
+        </script>
+  </body>
+</html>
